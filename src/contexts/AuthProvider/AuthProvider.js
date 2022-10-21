@@ -3,6 +3,7 @@ import { createUserWithEmailAndPassword, getAuth, onAuthStateChanged, sendEmailV
 import App from '../../firebase/firebase.config';
 
 
+
 export const AuthContext = createContext();
 const auth = getAuth(App)
 const AuthProvider = ({ children }) => {
@@ -25,12 +26,12 @@ const AuthProvider = ({ children }) => {
         return signInWithEmailAndPassword(auth, email, password);
     }
 
-    const updateUserProfile = (profile) => {
-        return updateProfile(auth.currentUser, profile);
-    }
-
     const verifyEmail = () => {
         return sendEmailVerification(auth.currentUser);
+    }
+
+    const updateUserProfile = (profile) => {
+        return updateProfile(auth.currentUser, profile);
     }
 
     const logOut = () => {
